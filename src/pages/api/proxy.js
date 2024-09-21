@@ -2,6 +2,7 @@ import https from 'https';
 
 export default function handler(req, res) {
   if (req.method === 'GET') {
+    
     const baseApiUrl = process.env.API_URL || "http://localhost:1337";
     const apiUrl = `${baseApiUrl}/api/faqs?populate=faq_questions`;
 
