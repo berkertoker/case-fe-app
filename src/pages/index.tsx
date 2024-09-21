@@ -1,6 +1,21 @@
 import React from "react";
 
-export default function Home({ data }) {
+interface FAQ {
+  question: string;
+  answer: string;
+}
+
+interface Data {
+  title: string;
+  description: string;
+  faq_questions: FAQ[];
+}
+
+interface HomeProps {
+  data: Data | null;
+}
+
+export default function Home({ data }: HomeProps) {
   return (
     <div className="bg-[#F8FAFC] min-h-screen pt-12 md:pt-28">
       <div className="max-w-7xl mx-auto p-8">
@@ -16,7 +31,7 @@ export default function Home({ data }) {
               <div key={columnIndex}>
                 {data.faq_questions
                   .slice(columnIndex * 3, columnIndex * 3 + 3)
-                  .map((faq, index) => (
+                  .map((faq: FAQ, index: number) => (
                     <div key={index} className="mb-10 space-y-6">
                       <h3 className="text-[#0F182A]" style={{ fontSize: '17px', fontWeight: 600 }}>
                         {faq.question}
@@ -43,10 +58,9 @@ export async function getServerSideProps() {
   const res = await fetch(`${baseUrl}/api/proxy`);
   const data = await res.json();
 
-
   return {
     props: {
-      data: data.data[0],
+      data: data.data[0] || null,
     },
   };
 }
