@@ -17,7 +17,7 @@ interface HomeProps {
 
 export default function Home({ data }: HomeProps) {
   return (
-    <div className="bg-[#F8FAFC] min-h-screen pt-12 md:pt-24">
+    <div className="bg-[#F8FAFC] min-h-screen pt-12 md:pt-20">
       <div className="max-w-7xl mx-auto p-8">
         <h1 className="text-[#0F182A] mb-4" style={{ fontSize: '36px', fontWeight: 600 }}>
           {data ? data.title : ""}
