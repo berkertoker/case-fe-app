@@ -17,7 +17,7 @@ interface HomeProps {
 
 export default function Home({ data }: HomeProps) {
   return (
-    <div className="bg-[#F8FAFC] min-h-screen pt-12 md:pt-28">
+    <div className="bg-[#F8FAFC] min-h-screen pt-12 md:pt-24">
       <div className="max-w-7xl mx-auto p-8">
         <h1 className="text-[#0F182A] mb-4" style={{ fontSize: '36px', fontWeight: 600 }}>
           {data ? data.title : ""}
@@ -54,7 +54,7 @@ export default function Home({ data }: HomeProps) {
 
 // SSR
 export async function getServerSideProps() {
-  const baseUrl = process.env.BASE_URL || "http://localhost:3000";
+  const baseUrl = process.env.BASE_URL;
   const res = await fetch(`${baseUrl}/api/proxy`);
   const data = await res.json();
 
